@@ -25,8 +25,7 @@ const useNet = (cameraRef: RefObject<HTMLVideoElement>) => {
     while (true) {
       const capturedImage = await inputVideo.capture();
       const result = await mobileNet.classify(capturedImage);
-      const { className, probability } = result[0];
-      setResult({ className, probability });
+      setResult(result[0]);
 
       capturedImage.dispose();
       await tf.nextFrame();
